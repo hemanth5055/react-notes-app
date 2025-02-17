@@ -53,14 +53,15 @@ function Foreground() {
             value={inpName}
             onChange={(e) => setinpName(e.target.value)}
             placeholder="Name "
-            className="bg-gray-300 h-[50px] w-[40%] outline-none px-2 rounded-lg font-mono text-xl"
+            className="bg-gray-300 h-[50px] w-[40%] outline-none px-2 rounded-lg font-mono text-xl
+            max-sm:w-[80%] max-sm:text-lg"
           />
           <textarea
             name="content"
             id="content"
             value={inpDesc}
             onChange={(e) => setinpDesc(e.target.value)}
-            className="bg-gray-300 h-[65%] outline-none w-[75%] p-2 resize-none rounded-lg font-mono text-xl"
+            className="bg-gray-300 h-[65%] outline-none w-[75%] p-2 resize-none rounded-lg font-mono text-xl max-sm:w-[80%] max-sm:text-lg"
             placeholder="Your Note Here..."
           ></textarea>
           <div
@@ -82,7 +83,7 @@ function Foreground() {
       ) : (
         ""
       )}
-      <div className="relative left-[50%] translate-x-[-50%] flex gap-5 flex-wrap p-5">
+      <div className="relative left-[50%] translate-x-[-50%] flex gap-5 flex-wrap p-5 max-sm:justify-center">
         {Notes.map((item, index) => (
           <Note
             key={index}
@@ -96,7 +97,7 @@ function Foreground() {
         ))}
 
         <div
-          className="h-[330px] w-[310px] bg-gray-800 rounded-3xl flex justify-center items-center cursor-pointer"
+          className="h-[330px] w-[310px] bg-gray-800 max-sm:h-[250px] max-sm:w-[200px] rounded-3xl flex justify-center items-center cursor-pointer "
           onClick={() => setshowaddpopup(true)}
         >
           <IoAddCircle size={80} className="text-gray-300" />
