@@ -8,8 +8,8 @@ function Note({ Nid, Notename, Notedesc, deleteNote, readMore, findex }) {
   useEffect(() => {
     const updateLimits = () => {
       if (window.innerWidth <= 640) {
-        setNameLimit(13);
-        setDescLimit(105);
+        setNameLimit(12);
+        setDescLimit(100);
       } else {
         setNameLimit(13);
         setDescLimit(210);
@@ -33,7 +33,7 @@ function Note({ Nid, Notename, Notedesc, deleteNote, readMore, findex }) {
           {truncateText(Notename, nameLimit)}
         </h3>
       </div>
-      <div className="h-[66%] max-sm:h-[62%] p-5 py-1 overflow-hidden">
+      <div className="h-[66%] max-sm:h-[64%] p-5 py-1 overflow-hidden">
         <p className="font-mono text-gray-300 w-[100%] overflow-x-hidden max-sm:text-sm">
           {truncateText(Notedesc, descLimit)}&nbsp;
           {Notedesc.length > descLimit && (

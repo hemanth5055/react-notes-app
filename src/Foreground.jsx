@@ -36,9 +36,9 @@ function Foreground() {
   };
 
   return (
-    <div className="wholebg absolute z-10 w-full h-screen">
+    <div className="wholebg absolute z-10 w-full min-h-screen bg-black">
       {showaddpopup ? (
-        <div className="absolute w-[95%] h-[90vh] rounded-3xl left-[50%] translate-x-[-50%] z-10 bg-slate-800 top-[5%] flex flex-col p-5 pl-12  gap-5 ">
+        <div className="absolute w-[95%] h-[90vh] rounded-3xl left-[50%] translate-x-[-50%] z-10 bg-slate-800 fixed top-[5%] flex flex-col p-5 pl-12  gap-5 ">
           <div className="top w-full flex items-center justify-end px-[5%]">
             <IoCloseCircleOutline
               size={50}
@@ -83,7 +83,7 @@ function Foreground() {
       ) : (
         ""
       )}
-      <div className="relative left-[50%] translate-x-[-50%] flex gap-5 flex-wrap p-5 max-sm:justify-center">
+      <div className="relative  left-[50%] translate-x-[-50%] flex gap-5 flex-wrap p-5 max-sm:justify-center justify-center bg-black">
         {Notes.map((item, index) => (
           <Note
             key={index}

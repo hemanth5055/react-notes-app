@@ -4,8 +4,8 @@ import Foreground from "./Foreground";
 
 function App() {
   return (
-    <div className="w-full h-screen">
-      <Background></Background>
+    <div className="w-full min-h-screen">
+      {/* <Background></Background> */}
       <Foreground></Foreground>
     </div>
   );
