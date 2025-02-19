@@ -5,6 +5,7 @@ import { v4 as uuid } from "uuid";
 
 import Note from "./Note";
 import Readmorecont from "./Readmorecont";
+import UseLocalstorage from "./useLocalstorage";
 
 function Foreground() {
   const [inpName, setinpName] = useState("");
@@ -13,7 +14,7 @@ function Foreground() {
   const [showaddpopup, setshowaddpopup] = useState(false);
   const [showcontpopup, setshowcontpopup] = useState(false);
   const [contIdx, setcontIdx] = useState();
-
+  const a = UseLocalstorage("localnotes", Notes, setNotes);
   const handleaddNotes = () => {
     if (inpName.length > 0 && inpDesc.length > 0) {
       const temp = { name: inpName, desc: inpDesc, id: uuid() };
