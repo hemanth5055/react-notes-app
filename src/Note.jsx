@@ -1,7 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { RiDeleteBin7Line } from "react-icons/ri";
-
-function Note({ Nid, Notename, Notedesc, deleteNote, readMore, findex }) {
+import { RiHeartLine } from "react-icons/ri";
+import { RiHeartFill } from "react-icons/ri";
+import { MdContentCopy } from "react-icons/md";
+function Note({
+  Nid,
+  Notename,
+  Notedesc,
+  deleteNote,
+  readMore,
+  findex,
+  heart,
+  fav,
+}) {
   const [nameLimit, setNameLimit] = useState(15);
   const [descLimit, setDescLimit] = useState(220);
 
@@ -9,10 +20,10 @@ function Note({ Nid, Notename, Notedesc, deleteNote, readMore, findex }) {
     const updateLimits = () => {
       if (window.innerWidth <= 640) {
         setNameLimit(12);
-        setDescLimit(100);
+        setDescLimit(160);
       } else {
         setNameLimit(13);
-        setDescLimit(210);
+        setDescLimit(230);
       }
     };
 
@@ -25,20 +36,34 @@ function Note({ Nid, Notename, Notedesc, deleteNote, readMore, findex }) {
   const truncateText = (text, limit) =>
     text.length <= limit ? text : `${text.slice(0, limit)}...`;
 
+  const copytoclip = (desc) => {
+    navigator.clipboard.writeText(desc);
+  };
+
   return (
-    <div className="bg-gray-800 h-[330px] w-[310px] rounded-3xl max-sm:h-[250px] max-sm:w-[200px] max-sm:rounded-2xl">
-      <div className="h-[20%] max-sm:h-[22%] rounded-t-3xl flex justify-start items-center pl-5">
-        <div className="w-[3px] h-[25px] rounded-sm bg-white mr-[10px]"></div>
-        <h3 className="font-mono text-xl text-blue-300 max-sm:text-lg">
+    <div className="bg-[#ebecf3] h-[330px] w-[330px] rounded-3xl max-sm:h-[265px] max-sm:w-[235px] max-sm:rounded-2xl">
+      <div className="h-[24%] max-sm:h-[22%] rounded-t-3xl flex justify-between items-center px-5">
+        {/* <div className="w-[3px] h-[25px] rounded-sm bg-white mr-[10px]"></div> */}
+        <h3 className="font-monts text-2xl select-none text-black max-sm:text-lg font-semibold">
           {truncateText(Notename, nameLimit)}
         </h3>
+        <div
+          className="heart bg-white p-2 rounded-full cursor-pointer"
+          onClick={() => fav(findex)}
+        >
+          {!heart ? (
+            <RiHeartLine size={25} color="black" />
+          ) : (
+            <RiHeartFill size={25} color="crimson" />
+          )}
+        </div>
       </div>
-      <div className="h-[66%] max-sm:h-[64%] p-5 py-1 overflow-hidden">
-        <p className="font-mono text-gray-300 w-[100%] overflow-x-hidden max-sm:text-sm">
+      <div className="h-[62%] max-sm:h-[64%] p-5 py-1 overflow-hidden">
+        <p className="font-monts text-black w-[100%] select-none overflow-x-hidden max-sm:text-sm font-medium">
           {truncateText(Notedesc, descLimit)}&nbsp;
           {Notedesc.length > descLimit && (
             <span
-              className="hover:text-red-300 text-red-200 underline cursor-pointer"
+              className=" text-red-700 underline cursor-pointer"
               onClick={() => readMore(findex)}
             >
               Read More
@@ -46,9 +71,18 @@ function Note({ Nid, Notename, Notedesc, deleteNote, readMore, findex }) {
           )}
         </p>
       </div>
-      <div className="h-[14%] rounded-b-3xl flex justify-end items-center pr-8 pt-1">
+      <div className="h-[11%] rounded-b-3xl flex justify-end items-center pr-8 pt-1 gap-3">
+        <MdContentCopy
+          size={20}
+          color="black"
+          className="cursor-pointer"
+          onClick={() => {
+            copytoclip(Notedesc);
+          }}
+        />
         <RiDeleteBin7Line
-          color="white"
+          size={20}
+          color="black"
           className="cursor-pointer"
           onClick={() => deleteNote(Nid)}
         />
